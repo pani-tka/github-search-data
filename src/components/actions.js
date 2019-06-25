@@ -1,6 +1,7 @@
 export const SEARCH_TEXT_CHANGED = 'SEARCH_TEXT_CHANGED';
 export const FETCH_ORGANIZATIONS_SUCCESS = 'FETCH_ORGANIZATIONS_SUCCESS';
 export const FETCH_MEMBERS_SUCCESS = 'FETCH_MEMBERS_SUCCESS';
+export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 
 export const searchTextChanged = organizationName => ({
   type: 'SEARCH_TEXT_CHANGED',
@@ -36,3 +37,22 @@ export const fetchMembers = () => (dispatch, getState) => {
         dispatch(fetchMembersSuccess(response))
       })
 };
+
+const fetchUserSuccess = user => {
+  console.log(user);
+  return {
+  type: 'FETCH_USER_SUCCESS',
+  user: user
+  }
+};
+
+export const fetchUser = () => (dispatch, getState) => {
+  const {members} = getState();
+
+  fetch( `https://api.github.com/users/${members.login}`)
+      .then(response => response.json())
+      .then(response => {
+        dispatch(fetchUserSuccess(response))
+      })
+};
+

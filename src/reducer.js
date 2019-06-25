@@ -1,13 +1,15 @@
 import {
   SEARCH_TEXT_CHANGED,
   FETCH_ORGANIZATIONS_SUCCESS,
-  FETCH_MEMBERS_SUCCESS
+  FETCH_MEMBERS_SUCCESS,
+  FETCH_USER_SUCCESS
 } from './components/actions';
 
 const initialState = {
   organizationName : '',
   organizations: [],
-  members: []
+  members: [],
+  user: []
 }
 
 export const reducer = (state = initialState, action) => {
@@ -32,6 +34,14 @@ export const reducer = (state = initialState, action) => {
       const nextState = {
         ...state,
         members: action.members
+      };
+
+      return nextState;
+    }
+    case FETCH_USER_SUCCESS: {
+      const nextState = {
+        ...state,
+        user: action.user
       };
 
       return nextState;

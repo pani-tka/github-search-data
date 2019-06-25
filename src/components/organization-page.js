@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {fetchMembers} from './actions';
+import {fetchMembers, fetchUser} from './actions';
 
 class OrganizationPage extends Component {
+
+  onClick = () => {
+    this.props.fetchUser();
+  };
 
   render(){
     const {members} = this.props;
@@ -15,7 +19,9 @@ class OrganizationPage extends Component {
             {!!members &&
               members.map((member) => 
                 <div key={member.id}>
-                  <Link to={`/users/${member.login}`}>{member.login}</Link>
+                  <Link to={`/users/${member.login}`} onClick={this.onClick}>
+                    {member.login}
+                  </Link>
                 </div>
               )
             }
@@ -26,11 +32,13 @@ class OrganizationPage extends Component {
 };
 
 const mapStateToProps = state => ({
-  members: state.members
+  members: state.members,
+  user: state.user
 })
 
 const mapDispatchToProps = {
-  fetchMembers
+  fetchMembers,
+  fetchUser
 };
 
 export default connect(
