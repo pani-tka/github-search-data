@@ -4,6 +4,10 @@ import {fetchUser} from './actions';
 
 class UserPage extends Component {
 
+  componentDidMount () {
+    this.props.fetchUser();
+  };
+
   render () {
     const {user} = this.props;
 
