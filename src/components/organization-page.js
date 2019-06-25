@@ -1,10 +1,41 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {fetchMembers} from './actions';
 
-export const OrganizationPage = props => (
-  <div>
-    <div>Organization {props.match.params.organizationId}</div>
-    <Link to="/users/1">Organization member 1</Link>
-    <Link to="/users/2">Organization member 2</Link>
-  </div>
-);
+class OrganizationPage extends Component {
+
+  render(){
+    const {members} = this.props;
+
+      return (
+        <div>
+          <div>Organization {this.props.match.params.organizationId}</div>
+          <div>
+            {!!members &&
+              members.map((member) => 
+                <div key={member.id}>
+                  <Link to={`/users/${member.login}`}>{member.login}</Link>
+                </div>
+              )
+            }
+          </div>
+        </div> 
+      )
+  }
+};
+
+const mapStateToProps = state => ({
+  members: state.members
+})
+
+const mapDispatchToProps = {
+  fetchMembers
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(OrganizationPage);
+  
+
