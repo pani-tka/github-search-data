@@ -8,8 +8,8 @@ export const searchTextChanged = organizationName => ({
 
 const fetchOrganizationsSuccess = data => ({
   type: 'FETCH_ORGANIZATIONS_SUCCESS',
-  organizations: data
-})
+  organizations: data.items
+}) 
 
 export const fetchOrganizations = () => (dispatch, getState) => {
   const {organizationName} = getState();

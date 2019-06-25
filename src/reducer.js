@@ -5,7 +5,8 @@ import {
 
 const initialState = {
   organizationName : '',
-  organizations: null,
+  organizations: [],
+
 }
 
 export const reducer = (state = initialState, action) => {
