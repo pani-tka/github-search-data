@@ -46,10 +46,9 @@ const fetchUserSuccess = user => {
   }
 };
 
-export const fetchUser = () => (dispatch, getState) => {
-  const {members} = getState();
+export const fetchUser = (userName) => (dispatch, getState) => {
 
-  fetch( `https://api.github.com/users/${members.login}`)
+  fetch( `https://api.github.com/users/${userName}`)
       .then(response => response.json())
       .then(response => {
         dispatch(fetchUserSuccess(response))

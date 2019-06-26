@@ -4,16 +4,18 @@ import {fetchUser} from './actions';
 
 class UserPage extends Component {
 
+
   componentDidMount () {
-    this.props.fetchUser();
+    this.props.fetchUser(this.props.match.params.userName);
   };
 
   render () {
     const {user} = this.props;
+    console.log(this.props);
 
       return (
         <div>
-          <div>User {this.props.match.params.userId}</div>
+          <div>User {this.props.match.params.userName}</div>
           <div>
             <img src={user.avatar_url} alt=""></img>
             <a href={user.html_url}>{user.login}</a>
