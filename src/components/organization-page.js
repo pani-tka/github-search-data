@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {fetchMembers, fetchUser} from './actions';
+import {fetchMembers, fetchUser} from '../actions';
 
 class OrganizationPage extends Component {
 
-  componentDidMount () {
-    this.props.fetchMembers(this.props.match.params.organizationId);
+  componentDidMount() {
+    this.props.fetchMembers(this.props.match.params.organizationName);
   }
 
-  render(){
+  render() {
     const {members} = this.props;
     
       return (
         <div>
-          <div>Organization {this.props.match.params.organizationId}</div>
+          <div>Organization {this.props.match.params.organizationName} </div>
           <div>
             {!!members &&
               members.map((member) => 

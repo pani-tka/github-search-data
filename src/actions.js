@@ -3,9 +3,9 @@ export const FETCH_ORGANIZATIONS_SUCCESS = 'FETCH_ORGANIZATIONS_SUCCESS';
 export const FETCH_MEMBERS_SUCCESS = 'FETCH_MEMBERS_SUCCESS';
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 
-export const searchTextChanged = organizationName => ({
+export const searchTextChanged = queryText => ({
   type: 'SEARCH_TEXT_CHANGED',
-  organizationName
+  queryText
 });
 
 const fetchOrganizationsSuccess = data => ({
@@ -14,9 +14,9 @@ const fetchOrganizationsSuccess = data => ({
 });
 
 export const fetchOrganizations = () => (dispatch, getState) => {
-  const {organizationName} = getState();
+  const {queryText} = getState();
 
-  fetch( `https://api.github.com/search/users?q=${organizationName}+type:Organization`)
+  fetch( `https://api.github.com/search/users?q=${queryText}+type:Organization`)
       .then(response => response.json())
       .then(response => {
         dispatch(fetchOrganizationsSuccess(response))
@@ -28,22 +28,19 @@ const fetchMembersSuccess = members => ({
   members: members
 });
 
-export const fetchMembers = (organizationId) => (dispatch) => {
+export const fetchMembers = (organizationName) => (dispatch) => {
 
-  fetch( `https://api.github.com/orgs/${organizationId}/members`)
+  fetch( `https://api.github.com/orgs/${organizationName}/members`)
       .then(response => response.json())
       .then(response => {
         dispatch(fetchMembersSuccess(response))
       })
 };
 
-const fetchUserSuccess = user => {
-  console.log(user);
-  return {
+const fetchUserSuccess = user => ({
   type: 'FETCH_USER_SUCCESS',
   user: user
-  }
-};
+});
 
 export const fetchUser = (userName) => (dispatch) => {
 

@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchUser} from './actions';
+import {fetchUser} from '../actions';
 
 class UserPage extends Component {
-
 
   componentDidMount () {
     this.props.fetchUser(this.props.match.params.userName);
@@ -11,8 +10,7 @@ class UserPage extends Component {
 
   render () {
     const {user} = this.props;
-    console.log(this.props);
-
+    
       return (
         <div>
           <div>User {this.props.match.params.userName}</div>
