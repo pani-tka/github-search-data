@@ -5,10 +5,6 @@ import {fetchMembers, fetchUser} from './actions';
 
 class OrganizationPage extends Component {
 
-  onClick = () => {
-    this.props.fetchUser();
-  };
-
   render(){
     const {members} = this.props;
 
@@ -19,7 +15,7 @@ class OrganizationPage extends Component {
             {!!members &&
               members.map((member) => 
                 <div key={member.id}>
-                  <Link to={`/users/${member.login}`} onClick={this.onClick}>
+                  <Link to={`/users/${member.login}`}>
                     {member.login}
                   </Link>
                 </div>
