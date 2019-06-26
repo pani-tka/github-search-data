@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userHeader {
+  font-size: 20px;
+  color: #002e09;
+  font-weight: normal;
+  text-align: center;
+  margin-top: 5%;
+}
+
+.userCard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 500px;
+  height: 200px;
+  margin: 0 auto;
+  background-color: white;
+  margin-top: 5%;
+  border: 1px solid #002e09;
+}
+
+.userAvatar {
+  display: block;
+  margin: 10px;
+  max-width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  padding: 5px;
+}
+.userLogin {
+  display:block;
+  font-size: 25px;
+  color: #002e09;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.userName {
+  font-size: 20px;
+  color: #655d5b;
+}
+
+.userBio {
+  width: 80%;
+  text-align: center;
+  font-size: 15px;
+  color: #655d5b;
+}
+
+.userLocation {
+  width: 50%;
+  font-size: 15px;
+  color: #002e09;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.userEmail {
+  width: 50%;
+  font-size: 15px;
+  color: #002e09;
+  text-align: left;
+}
+
+.returnLink{
+  width: 150px;
+  height: 35px;
+  border: none;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  background-color: #002e09;
+  margin-top: 30px;
+  outline: none;
+  text-decoration: none;
+  padding-top: 14px;
+}

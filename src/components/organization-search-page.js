@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {searchTextChanged, fetchOrganizations} from '../actions';
+import styles from './organization-search-page.module.scss';
 
 class OrganizationSearchPage extends Component {
 
@@ -18,27 +19,36 @@ class OrganizationSearchPage extends Component {
     const {queryText, organizations } = this.props;
 
       return (
-        <div>
-          <div>Organization search</div>
-          <div>
+        <div className={styles.container}>
+          <div className={styles.searchContainer}>
+          <div className={styles.header}>Organization search</div>
             <input
+              className={styles.searchInput}
               type = "text"
               placehloder = "Type to search..."
               value = {queryText}
               onChange = {this.onChange}
             />
             <button
+              className={styles.searchButton}
               type = "button"
               onClick = {this.onClick}
             >
               Search
             </button>
           </div>
-          <div>
+          <div className={styles.ogranizationList}>
             {!!organizations &&
               organizations.map((item) => 
-                <div key={item.id}>
-                  <Link to={`/organizations/${item.login}`}>{item.login}</Link>
+                <div className={styles.ogranizationItem} key={item.id}>
+                  <img className={styles.organizationAvatar}
+                    scr={item.avatar_url}
+                    alt=""
+                  >
+                  </img>
+                  <Link to={`/organizations/${item.login}`} className={styles.ogranizationName}>
+                    {item.login}
+                  </Link>
                 </div>
               )
             }

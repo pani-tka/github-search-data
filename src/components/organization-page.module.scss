@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.memberHeader{
+  font-size: 25px;
+  color: #002e09;
+  font-weight: normal;
+  text-align: center;
+  margin-top: 5%;
+}
+
+.returnLink{
+  width: 150px;
+  height: 35px;
+  border: none;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  background-color: #002e09;
+  margin-top: 30px;
+  outline: none;
+  text-decoration: none;
+  padding-top: 14px;
+
+}
+
+.memberList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+}
+
+.memberItem {
+  width: 300px;
+  height: 80px;
+  border-bottom: 1px solid #002e09;
+}
+
+.memberName {
+  display:block;
+  font-size: 20px;
+  color: #002e09;
+  text-decoration: none;
+  padding-top: 30px;
+}

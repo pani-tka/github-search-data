@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import {fetchUser} from '../actions';
+import styles from './user-page.module.scss';
 
 class UserPage extends Component {
 
@@ -12,16 +14,21 @@ class UserPage extends Component {
     const {user} = this.props;
 
       return (
-        <div>
-          <div>User {this.props.match.params.userName}</div>
-          <div>
-            <img src={user.avatar_url} alt=""></img>
-            <a href={user.html_url}>{user.login}</a>
-            <p>{user.name}</p>
-            <p>{user.bio}</p>
-            <p>{user.location}</p>
-            <p>{user.email}</p>
+        <div className={styles.container}>
+          <div className={styles.userHeader}>User {this.props.match.params.userName}</div>
+          <div className={styles.userCard}>
+            <img className={styles.userAvatar} src={user.avatar_url} alt=""></img>
+            <a className={styles.userLogin} href={user.html_url}>{user.login}</a>
+            <div className={styles.userName}>{user.name}</div>
+            <div className={styles.userBio}>{user.bio}</div>
+            <div className={styles.userLocation}>
+              {user.location}
+            </div>
+            <div className={styles.userEmail}>{user.email}</div>
           </div>
+          <Link to='/' className={styles.returnLink}> 
+            Return to search page 
+          </Link>
         </div>
       )
   }
