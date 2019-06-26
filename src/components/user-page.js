@@ -10,7 +10,7 @@ class UserPage extends Component {
 
   render () {
     const {user} = this.props;
-    
+
       return (
         <div>
           <div>User {this.props.match.params.userName}</div>
@@ -27,7 +27,6 @@ class UserPage extends Component {
   }
 }
 const mapStateToProps = state => ({
-  members: state.members,
   user: state.user
 })
 
