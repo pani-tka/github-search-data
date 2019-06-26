@@ -5,9 +5,13 @@ import {fetchMembers, fetchUser} from './actions';
 
 class OrganizationPage extends Component {
 
+  componentDidMount () {
+    this.props.fetchMembers(this.props.match.params.organizationId);
+  }
+
   render(){
     const {members} = this.props;
-
+    
       return (
         <div>
           <div>Organization {this.props.match.params.organizationId}</div>

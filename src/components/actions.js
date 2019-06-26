@@ -28,10 +28,9 @@ const fetchMembersSuccess = members => ({
   members: members
 });
 
-export const fetchMembers = () => (dispatch, getState) => {
-  const {organizationName} = getState();
+export const fetchMembers = (organizationId) => (dispatch) => {
 
-  fetch( `https://api.github.com/orgs/${organizationName}/members`)
+  fetch( `https://api.github.com/orgs/${organizationId}/members`)
       .then(response => response.json())
       .then(response => {
         dispatch(fetchMembersSuccess(response))
@@ -46,7 +45,7 @@ const fetchUserSuccess = user => {
   }
 };
 
-export const fetchUser = (userName) => (dispatch, getState) => {
+export const fetchUser = (userName) => (dispatch) => {
 
   fetch( `https://api.github.com/users/${userName}`)
       .then(response => response.json())

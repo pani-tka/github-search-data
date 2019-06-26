@@ -11,40 +11,39 @@ class OrganizationSearch extends Component {
 
   onClick = () => {
     this.props.fetchOrganizations();
-    this.props.fetchMembers();
   };
 
   render() {
     const {organizationName, organizations } = this.props;
       
-    return (
-      <div>
-        <div>Organization search</div>
+      return (
         <div>
-          <input
-            type = "text"
-            placehloder = "Type to search..."
-            value = {organizationName}
-            onChange = {this.onChange}
-          />
-          <button
-            type = "button"
-            onClick = {this.onClick}
-          >
-            Search
-          </button>
+          <div>Organization search</div>
+          <div>
+            <input
+              type = "text"
+              placehloder = "Type to search..."
+              value = {organizationName}
+              onChange = {this.onChange}
+            />
+            <button
+              type = "button"
+              onClick = {this.onClick}
+            >
+              Search
+            </button>
+          </div>
+          <div>
+            {!!organizations &&
+              organizations.map((item) => 
+                <div key={item.id}>
+                  <Link to={`/organizations/${item.login}`}>{item.login}</Link>
+                </div>
+              )
+            }
+          </div>
         </div>
-        <div>
-          {!!organizations &&
-            organizations.map((item) => 
-              <div key={item.id}>
-                <Link to={`/organizations/${item.login}`}>{item.login}</Link>
-              </div>
-            )
-          }
-        </div>
-      </div>
-    )
+      )
   }
   }
 
